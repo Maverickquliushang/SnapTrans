@@ -1,0 +1,10 @@
+[project]
+name = "snaptrans"
+version = "1.14.0"
+description = "Private local OCR and configurable screenshot translation for Windows"
+requires-python = ">=3.12,<3.13"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"

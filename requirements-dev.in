@@ -1,0 +1,4 @@
+-r requirements.in
+PyInstaller>=6.12,<7
+pytest>=8,<10
+pip-tools>=7,<8

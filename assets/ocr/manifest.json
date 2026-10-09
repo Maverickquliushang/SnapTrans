@@ -1,0 +1,40 @@
+{
+  "rapidocr_version": "3.9.2",
+  "models": [
+    {
+      "role": "Det",
+      "path": "models/PP-OCRv6_det_small.onnx",
+      "source": "rapidocr-3.9.2 wheel: rapidocr/models/PP-OCRv6_det_small.onnx",
+      "upstream_version": "PP-OCRv6",
+      "size": 9929594,
+      "sha256": "090f04abcd9d9a7498bc4ebf677e4cb9bdce1fe4197ddb7e529f1ef44e1ff94f",
+      "license": "licenses/PaddleOCR-LICENSE",
+      "dictionary": null
+    },
+    {
+      "role": "Cls",
+      "path": "models/ch_ppocr_mobile_v2.0_cls_mobile.onnx",
+      "source": "rapidocr-3.9.2 wheel: rapidocr/models/ch_ppocr_mobile_v2.0_cls_mobile.onnx",
+      "upstream_version": "PP-OCRv4",
+      "size": 585532,
+      "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+      "license": "licenses/PaddleOCR-LICENSE",
+      "dictionary": null
+    },
+    {
+      "role": "Rec",
+      "path": "models/PP-OCRv6_rec_small.onnx",
+      "source": "rapidocr-3.9.2 wheel: rapidocr/models/PP-OCRv6_rec_small.onnx",
+      "upstream_version": "PP-OCRv6",
+      "size": 21234383,
+      "sha256": "6f327246b50388f3c176ae304bd95767ea6dc0c9ae92153ef8cbe210b3c14884",
+      "license": "licenses/PaddleOCR-LICENSE",
+      "dictionary": "embedded ONNX character metadata"
+    }
+  ],
+  "model_license_sources": [
+    "https://github.com/PaddlePaddle/PaddleOCR",
+    "https://huggingface.co/RapidAI/RapidOCR"
+  ],
+  "config_sha256": "8c20da2f20fd0cdda9d79b0400d542955beea8ebe5ae3a480c7bfc6dc12bc159"
+}
