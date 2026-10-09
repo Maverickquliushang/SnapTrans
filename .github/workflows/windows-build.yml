@@ -1,0 +1,45 @@
+name: Windows build
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - name: Bootstrap pinned dependencies
+        run: |
+          . ./project-env.ps1
+          ./scripts/bootstrap.ps1
+      - name: Build and test (no desktop input injection on CI)
+        run: |
+          . ./project-env.ps1
+          ./scripts/build.ps1 -SkipInteractive
+      - name: Installer and clean source export
+        run: |
+          . ./project-env.ps1
+          . ./scripts/env.ps1
+          Invoke-Checked ./.venv/Scripts/python.exe @('scripts/build_installer.py')
+          Invoke-Checked ./.venv/Scripts/python.exe @('scripts/export_source.py')
+          Invoke-Checked ./.venv/Scripts/python.exe @('scripts/verify_archive.py')
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SnapTrans-Windows
+          path: |
+            output/*-Setup-x64.exe
+            output/*-win-x64.zip
+            output/*-source.zip
+            output/*.sha256
+            output/delivery-verification-*.json
+          if-no-files-found: error
