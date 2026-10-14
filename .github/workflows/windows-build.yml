@@ -13,8 +13,8 @@ jobs:
       run:
         shell: pwsh
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           architecture: x64
@@ -33,7 +33,7 @@ jobs:
           Invoke-Checked ./.venv/Scripts/python.exe @('scripts/build_installer.py')
           Invoke-Checked ./.venv/Scripts/python.exe @('scripts/export_source.py')
           Invoke-Checked ./.venv/Scripts/python.exe @('scripts/verify_archive.py')
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: SnapTrans-Windows
           path: |
